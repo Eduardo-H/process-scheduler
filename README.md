@@ -13,15 +13,15 @@ The file that has the data have to be named "data.txt" and needs to follow certa
 
 ## Full example
 Here is an example of what your data should look like. <br />
-<code style="display: block;
-  white-space: pre-wrap;">
-2 4\
-RR 4\
-FCFS\
-1 0 0 3\
-2 1 2 5\
-3 1 4 2\
-4 0 10 6\
+<code style="display: block; white-space: pre-wrap;">
+
+    2 4
+    RR 4
+    FCFS
+    1 0 0 3
+    2 1 2 5
+    3 1 4 2
+    4 0 10 6
 </code>
 
 ## Execution
@@ -36,21 +36,20 @@ After executing all the process, it will created a file named "output.txt" havin
 
 ### Example
 The results for the data used in the example would be:\
-<code style="display: block;
-  white-space: pre-wrap;">
-Gantt graph\
-| P1 (0-3) | P2 (3-8) | P3 (8-10) | P4 (10-14) | P4 (14-16) |
-\
-\
-Processes table \
-| ID: 1, PR: 0, AT: 0, BT: 3, CT: 3, TAT: 3, WT: 0 |\
-| ID: 4, PR: 0, AT: 10, BT: 6, CT: 16, TAT: 6, WT: 0 |\
-| ID: 2, PR: 1, AT: 2, BT: 5, CT: 8, TAT: 6, WT: 1 |\
-| ID: 3, PR: 1, AT: 4, BT: 2, CT: 10, TAT: 6, WT: 4 |\
-\
-Average time in the system\
-5.25
+<code style="display: block; white-space: pre-wrap;">
 
-Average waiting time\
-1.25
+    Gantt graph
+    | P1 (0-3) | P2 (3-8) | P3 (8-10) | P4 (10-14) | P4 (14-16) |
+ 
+    Processes table 
+    | ID: 1, PR: 0, AT: 0, BT: 3, CT: 3, TAT: 3, WT: 0 |
+    | ID: 4, PR: 0, AT: 10, BT: 6, CT: 16, TAT: 6, WT: 0 |
+    | ID: 2, PR: 1, AT: 2, BT: 5, CT: 8, TAT: 6, WT: 1 |
+    | ID: 3, PR: 1, AT: 4, BT: 2, CT: 10, TAT: 6, WT: 4 |
+
+    Average time in the system
+    5.25
+
+    Average waiting time
+    1.25
 </code>
