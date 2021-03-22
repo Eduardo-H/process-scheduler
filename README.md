@@ -13,7 +13,8 @@ The file that has the data have to be named "data.txt" and needs to follow certa
 
 ## Full example
 Here is an example of what your data should look like. <br />
-<code>
+<code style="display: block;
+  white-space: pre-wrap;">
 2 4\
 RR 4\
 FCFS\
@@ -35,7 +36,8 @@ After executing all the process, it will created a file named "output.txt" havin
 
 ### Example
 The results for the data used in the example would be:\
-<code>
+<code style="display: block;
+  white-space: pre-wrap;">
 Gantt graph\
 | P1 (0-3) | P2 (3-8) | P3 (8-10) | P4 (10-14) | P4 (14-16) |
 \
