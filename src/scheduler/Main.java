@@ -65,6 +65,10 @@ public class Main {
 				// Executing
 				execution.execute();
 				execution.finish();
+				
+				for (ProcessList pList : execution.getLists()) {
+					pList.orderById();
+				}
 
 				// Formating the data and calculating the averages
 				float sAvg = 0, wAvg = 0;

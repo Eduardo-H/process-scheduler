@@ -87,8 +87,8 @@ public class Execution {
 			}
 
 			for (int i = queue.size() - 1; i >= 0; i--) {
-				if (i-1 >= 0) {
-					if (p.getAlgorithmNumber() >= queue.get(i-1).getAlgorithmNumber()) {
+				if (i - 1 >= 0) {
+					if (p.getAlgorithmNumber() >= queue.get(i - 1).getAlgorithmNumber()) {
 						queue.add(i, p);
 						break;
 					}
@@ -111,7 +111,7 @@ public class Execution {
 	}
 
 	public List<Process> runFCFS(List<Process> queue) {
-		Process process = queue.get(0);
+		Process process = getLowerId(queue);
 		GanttExecution ganttEx = new GanttExecution(process.getId(), this.currentTime);
 
 		process.setConclusionTime(this.currentTime + process.getBashTime());
@@ -144,7 +144,7 @@ public class Execution {
 		process.setConclusionTime(this.currentTime + process.getBashTime());
 		process.updateRemaningTime(process.getBashTime());
 		this.currentTime += process.getBashTime();
-		
+
 		queue.remove(process);
 		this.executed.add(process);
 
@@ -202,6 +202,20 @@ public class Execution {
 		}
 
 		return index;
+	}
+
+	public Process getLowerId(List<Process> queue) {
+		Process p = queue.get(0);
+		int index = 0;
+
+		for (int i = 0; i < queue.size(); i++) {
+			if (p.getAlgorithmNumber() == queue.get(i).getAlgorithmNumber() && p.getId() > queue.get(i).getId()
+					&& p.getArrivalTime() == queue.get(i).getArrivalTime()) {
+				index = i;
+			}
+		}
+
+		return queue.get(index);
 	}
 
 	public int getCurrentTime() {

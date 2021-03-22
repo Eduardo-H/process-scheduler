@@ -49,20 +49,36 @@ public class ProcessList {
 	public void setProcesses(List<Process> processes) {
 		this.processes = processes;
 	}
-
-	public void orderByArrival() {
-		quickSort(processes, 0, processes.size() - 1);
+	
+	public void orderById() {
+		quickSort(processes, 0, processes.size() - 1, 0);
 	}
 
-	private static void quickSort(List<Process> list, int start, int end) {
+	public void orderByArrival() {
+		quickSort(processes, 0, processes.size() - 1, 1);
+	}
+
+	private static void quickSort(List<Process> list, int start, int end, int type) {
 		if (start < end) {
-			int pivot = split(list, start, end);
-			quickSort(list, start, pivot - 1);
-			quickSort(list, pivot + 1, end);
+			int pivot = 0;
+			switch (type) {
+				case 0:
+					pivot = splitId(list, start, end);
+					break;
+				case 1:
+					pivot = splitArrival(list, start, end);
+					break;
+				default:
+					System.out.println("Invalid type");
+					break;
+			}
+				
+			quickSort(list, start, pivot - 1, type);
+			quickSort(list, pivot + 1, end, type);
 		}
 	}
 
-	private static int split(List<Process> list, int start, int end) {
+	private static int splitArrival(List<Process> list, int start, int end) {
 		Process pivot = list.get(start);
 		int i = start + 1, f = end;
 		
@@ -70,6 +86,29 @@ public class ProcessList {
 			if (list.get(i).getArrivalTime() <= pivot.getArrivalTime())
 				i++;
 			else if (pivot.getArrivalTime() < list.get(f).getArrivalTime())
+				f--;
+			else {
+				Process change = list.get(i);
+				list.set(i, list.get(f));
+				list.set(f, change);
+				i++;
+				f--;
+			}
+		}
+		
+		list.set(start, list.get(f));
+		list.set(f, pivot);
+		return f;
+	}
+	
+	private static int splitId(List<Process> list, int start, int end) {
+		Process pivot = list.get(start);
+		int i = start + 1, f = end;
+		
+		while (i <= f) {
+			if (list.get(i).getId() <= pivot.getId())
+				i++;
+			else if (pivot.getId() < list.get(f).getId())
 				f--;
 			else {
 				Process change = list.get(i);
