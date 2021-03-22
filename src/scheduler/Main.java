@@ -55,21 +55,17 @@ public class Main {
 
 				scanner.close();
 				
-				// Ordering the queues
+				// Ordering the stack's processes by ID
 				for (ProcessList pList : execution.getLists()) {
-					pList.orderByArrival();
+					pList.orderById();
 				}
-
+				
 				execution.setLastArrival(mostLate);
 
 				// Executing
 				execution.execute();
 				execution.finish();
 				
-				for (ProcessList pList : execution.getLists()) {
-					pList.orderById();
-				}
-
 				// Formating the data and calculating the averages
 				float sAvg = 0, wAvg = 0;
 				String gantt = "Gantt graph\n\n", pTable = "Processes table\n\n", sysAvg = "Average time in the system\n",
